@@ -18,14 +18,7 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            if (car.CarName.Length >= 2 && car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
-            }
-            else
-            {
-                Console.WriteLine("Araba ismi 2 karakterden az ve günlük fiyat 0'dan küçük olamaz.");
-            }
+            _carDal.Add(car);
         }
 
         public void Delete(Car car)
@@ -38,14 +31,9 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetCarsByBrand(int brandId)
+        public List<Car> GetAllByBrandId(int brandId)
         {
-            return _carDal.GetAll(p=>p.BrandId == brandId);
-        }
-
-        public List<Car> GetCarsByColor(int colorId)
-        {
-            return _carDal.GetAll(p => p.ColorId == colorId);
+            return _carDal.GetByBrand(brandId);
         }
 
         public void Update(Car car)
